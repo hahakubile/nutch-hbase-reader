@@ -20,4 +20,5 @@ The configuration in is config.py.
 Requirements
 ============
 * Python 2.*
-* Twisted
+* Twisted (http://twistedmatrix.com/)
+* HappyBase (https://github.com/wbolster/happybase)
