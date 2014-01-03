@@ -1,0 +1,65 @@
+<html xmlns:t="http://twistedmatrix.com/ns/twisted.web.template/0.1">
+<head>
+  <meta charset="utf-8" />
+</head>
+<title>DocInfo, hahakubile</title>
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" />
+<body>
+<div class="container">
+  <div class="page-header">
+    <h2>DocInfo: Doc in Hbase with reversed url as key</h2>
+  </div>
+
+  <form class="form-horizontal" role="form" method="POST" t:render="widgets_search">
+    <div class="col-xs-8">
+      <input type="text" placeholder="url" class="form-control" name="baseurl"><t:attr name="value"><t:slot name="baseurl"/></t:attr></input>
+    </div>
+    <button type="submit" class="btn btn-success">Search</button>
+  </form>
+
+  <div class="page-header">
+    <h3><span class="label label-primary">revurl:</span><t:slot name="revurl" /></h3>
+  </div>
+
+  <div class="page-header">
+    <h3><span class="label label-primary">fetchfields:</span></h3>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>field</th>
+          <th>value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr t:render="widgets_fetchfields">
+          <td><t:slot name="fieldname"/></td>
+          <td><t:slot name="fieldvalue"/></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="page-header">
+    <h3><span class="label label-primary">outlinks:</span></h3>
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>link</th>
+          <th>anchor</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr t:render="widgets_outlinks">
+          <td><t:slot name="idx"/></td>
+          <td><t:slot name="link"/></td>
+          <td><t:slot name="anchor"/></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+</body>
+</html>
