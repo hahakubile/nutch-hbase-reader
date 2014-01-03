@@ -30,7 +30,7 @@ class Root(Resource):
         Resource.__init__(self)
 
     def render_GET(self, request):
-        deferred = flatten(request, ExampleElement(), request.write)
+        deferred = flatten(request, WebPage(), request.write)
         deferred.addCallback(finish_request, request)
         # in case of error we don't want the browser to stay stuck
         deferred.addErrback(flattenerror, request)
@@ -40,15 +40,15 @@ class Root(Resource):
         baseurl = request.args['baseurl'][0]
         revurl = reverseUrl(baseurl)
         row = getRow(revurl)
-        deferred = flatten(request, ExampleElement(baseurl, revurl, row), request.write)
+        deferred = flatten(request, WebPage(baseurl, revurl, row), request.write)
         deferred.addCallback(finish_request, request)
         deferred.addErrback(flattenerror, request)
         return NOT_DONE_YET
 
-webservice = TCPServer(http_port,
+webservice = TCPServer(config.HTTP_PORT,
                        server.Site(Root()), 
                        interface=config.BIND_ADDRESS)
 log.msg(format="Web console available at http://%(bind_address)s:%(http_port)s/",
-    bind_address=bind_address, http_port=config.HTTP_PORT)
+    bind_address=config.BIND_ADDRESS, http_port=config.HTTP_PORT)
 application = Application("MiniFrontend")
 webservice.setServiceParent(application)

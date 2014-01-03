@@ -1,6 +1,7 @@
 from urlparse import urlsplit
 from datetime import datetime
 import happybase
+import config
 
 '''
 nutch_2.2.1/src/java/org/apache/nutch/util/TableUtil.java
@@ -44,9 +45,9 @@ def convertUnixTime(unixtime):
                microsecond=(int(unixtime)%1000)*1000).strftime('%Y-%m-%d %H:%M:%S')
 
 def getTable(revurl):
-    connection = happybase.Connection(HBASE_HOST, autoconnect=False)
+    connection = happybase.Connection(config.HBASE_HOST, autoconnect=False)
     connection.open()
-    table = connection.table(HBASE_TABLE)
+    table = connection.table(config.HBASE_TABLE)
     return table
 
 def getRow(revurl, columns=['ol', 'f']):

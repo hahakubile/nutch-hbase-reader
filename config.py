@@ -1,5 +1,5 @@
 HBASE_HOST = "spider05"
 HBASE_TABLE = "tjkx_webpage"
-BIND_ADDRESS = "127.0.0.1"
+BIND_ADDRESS = "0.0.0.0"
 HTTP_PORT = 6800
 
