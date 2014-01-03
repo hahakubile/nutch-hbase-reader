@@ -15,7 +15,7 @@ The configuration in is config.py.
     HBASE_HOST = "" # hbase hostname
     HBASE_TABLE = "" # hbase tablename
     BIND_ADDRESS = "0.0.0.0" # the server you are in
-    HTTP_PORT = 6800 # default server port
+    HTTP_PORT = 6800 # default server port: 6800
 
 Requirements
 ============
